@@ -1,0 +1,22 @@
+{
+  "name": "node-team-manager",
+  "description": "creates team profile using command line",
+  "version": "1.0.0",
+  "main": "node index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Curtisaurus/node-team-manager.git"
+  },
+  "author": "Curtisaurus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Curtisaurus/node-team-manager/issues"
+  },
+  "homepage": "https://github.com/Curtisaurus/node-team-manager#readme"
+}
