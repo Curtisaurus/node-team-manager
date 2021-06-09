@@ -15,6 +15,9 @@
   },
   "author": "Curtisaurus",
   "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
   "bugs": {
     "url": "https://github.com/Curtisaurus/node-team-manager/issues"
   },
