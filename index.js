@@ -54,7 +54,7 @@ inquirer.prompt([
     employees.push(manager);
 
     if (answers.optional == 'finish') {
-        //run html render
+        renderHtml(employees);
     } else {
         addEmployee(answers.optional);
     }
@@ -116,12 +116,42 @@ function addEmployee(role) {
             employee = new Intern(answers.name, answers.id, answers.email, answers.school);
         }
         employees.push(employee);
-        console.log(employees)
 
         if (answers.optional == 'finish') {
-            //render html
+            renderHtml(employees);
         } else {
             addEmployee(answers.optional);
         }
     })
 }
+
+function renderHtml(employees) {
+    let employeeCards = ''
+    for (const employee of employees) {
+        employeeCards += `<div class="card" style="width: 18rem;">
+        <div class="card-header">
+          ${employee.name}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${employee.constructor.name}</li>
+          <li class="list-group-item">ID: ${employee.id}</li>
+          <li class="list-group-item">Email: <a href='mailto:${employee.email}'>${employee.email}</a></li>
+          <li class="list-group-item">${roleSpecific(employee)}}</li>
+        </ul>
+      </div>
+      
+      `
+    };
+    const managerName = employees[0].name.split(' ').join('').toLowerCase();
+    fs.writeFile(`./dist/${managerName}.html`,)
+}
+
+function roleSpecific(employee) {
+    if (employee.constructor.name == 'Manager') {
+        return `Office number: ${employee.officeNumber}`;
+    } else if (employee.constructor.name == 'Engineer') {
+        return `GitHub: <a href='https://github.com/${employee.github}'>${employee.github}</a>`;
+    } else if (employee.constructor.name == 'Intern') {
+        return `School: ${employee.school}`;
+    }
+};
