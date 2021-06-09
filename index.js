@@ -116,6 +116,7 @@ function addEmployee(role) {
             employee = new Intern(answers.name, answers.id, answers.email, answers.school);
         }
         employees.push(employee);
+        console.log(employees)
 
         if (answers.optional == 'finish') {
             //render html
