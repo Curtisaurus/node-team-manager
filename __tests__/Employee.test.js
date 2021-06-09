@@ -1,7 +1,3 @@
-// const { exportAllDeclaration } = require('babel-types');
-// const { iteratee } = require('lodash');
-// const { describe } = require('yargs');
-const { describe } = require('yargs');
 const Employee = require('../lib/employee');
 
 describe("Employee class", () => {
@@ -9,9 +5,9 @@ describe("Employee class", () => {
 
     describe("Initialization", () => {
         it('should create an object with name, id, and email properties', () => {
-            expect(employee.name).toEqual('Curtis');
+            expect(employee.name).toEqual('John');
             expect(employee.id).toEqual(23);
-            expect(employee.email).to
+            expect(employee.email).toEqual('username@mail.com')
         });
     });
 
