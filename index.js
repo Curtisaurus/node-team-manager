@@ -136,14 +136,15 @@ function renderHtml(employees) {
           <li class="list-group-item">${employee.constructor.name}</li>
           <li class="list-group-item">ID: ${employee.id}</li>
           <li class="list-group-item">Email: <a href='mailto:${employee.email}'>${employee.email}</a></li>
-          <li class="list-group-item">${roleSpecific(employee)}}</li>
+          <li class="list-group-item">${roleSpecific(employee)}</li>
         </ul>
       </div>
       
       `
     };
     const managerName = employees[0].name.split(' ').join('').toLowerCase();
-    fs.writeFile(`./dist/${managerName}.html`,)
+    fs.writeFile(`./dist/${managerName}.html`, employeeCards, (err) =>
+        err ? console.error(err) : console.log('Success!'))
 }
 
 function roleSpecific(employee) {
