@@ -1,4 +1,3 @@
-const { exp } = require('prelude-ls');
 const Engineer = require('../lib/engineer');
 
 describe("Engineer subclass", () => {
