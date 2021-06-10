@@ -128,23 +128,50 @@ function addEmployee(role) {
 function renderHtml(employees) {
     let employeeCards = ''
     for (const employee of employees) {
-        employeeCards += `<div class="card" style="width: 18rem;">
-        <div class="card-header">
-          ${employee.name}
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">${employee.constructor.name}</li>
-          <li class="list-group-item">ID: ${employee.id}</li>
-          <li class="list-group-item">Email: <a href='mailto:${employee.email}'>${employee.email}</a></li>
-          <li class="list-group-item">${roleSpecific(employee)}</li>
-        </ul>
-      </div>
+        employeeCards += `
+            <div class="card mx-auto m-1" style="width: 18rem;">
+                <div class="card-header">
+                    ${employee.name}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${employee.constructor.name}</li>
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item">Email: <a href='mailto:${employee.email}'>${employee.email}</a></li>
+                    <li class="list-group-item">${roleSpecific(employee)}</li>
+                </ul>
+            </div>
       
       `
     };
+
+    const upperHtml = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>My Team</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark mb-5">
+            <span class="navbar-brand mb-0 h1 w-100 text-center">My Team</span>
+        </nav>
+        <div class="container">
+            <div class="row">`;
+
+    const lowerHtml = `    </div></div>
+    </body>
+    </html>`
+
+    employeeCards += lowerHtml;
+
     const managerName = employees[0].name.split(' ').join('').toLowerCase();
-    fs.writeFile(`./dist/${managerName}.html`, employeeCards, (err) =>
-        err ? console.error(err) : console.log('Success!'))
+    fs.writeFile(`./dist/${managerName}.html`, upperHtml, (err) =>
+        err ? console.error(err) : console.log('Success!'));
+
+    fs.appendFile(`./dist/${managerName}.html`, employeeCards, (err) =>
+        err ? console.error(err) : console.log('Success!'));
 }
 
 function roleSpecific(employee) {
