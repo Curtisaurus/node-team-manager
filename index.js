@@ -151,7 +151,7 @@ function roleSpecific(employee) {
     if (employee.constructor.name == 'Manager') {
         return `Office number: ${employee.officeNumber}`;
     } else if (employee.constructor.name == 'Engineer') {
-        return `GitHub: <a href='https://github.com/${employee.github}'>${employee.github}</a>`;
+        return `GitHub: <a href='https://github.com/${employee.github}' target="_blank" rel="noopener noreferrer">${employee.github}</a>`;
     } else if (employee.constructor.name == 'Intern') {
         return `School: ${employee.school}`;
     }
